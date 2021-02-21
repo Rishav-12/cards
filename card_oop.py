@@ -22,8 +22,3 @@ class Card():
 		if self.suit == another_card.suit:
 			return True
 		return False
-
-if __name__ == '__main__':
-	my_card = Card("Five", "Spades")
-	your_card = Card("Ace", "Spades")
-	print(my_card.same_suit(your_card))
