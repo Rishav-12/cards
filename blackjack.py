@@ -1,10 +1,10 @@
-import sys
-
 SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"]
 RANKS = ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King']
 
 from card_oop import Card
 from random import shuffle
+import sys
+
 deck = []
 
 # Build the deck
@@ -32,17 +32,14 @@ def show_hand(who, hand):
 # this function checks for a win due to a blackjack or a loss by busting
 def check(who, hand):
 	hand_sum = sum([card.bjvalue for card in hand])
-	if hand_sum == 21:
-		print(f"\n{who} wins by getting a blackjack")
-		sys.exit()
-	elif hand_sum > 21:
+	if hand_sum > 21:
 		print(f"\n{who} busts and loses")
 		sys.exit()
 	else: # adjusting for an ace here
 		for card in hand:
 			if card.rank == "Ace":
 				hand_sum += 10
-				if hand_sum == 21:
+				if hand_sum == 21 and len(hand) == 2:
 					print(f"\n{who} wins by getting a blackjack")
 					sys.exit()
 				elif hand_sum > 21:
