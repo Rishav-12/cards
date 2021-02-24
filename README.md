@@ -14,4 +14,7 @@ Console card games
 	* Each player turns up a card at the same time and the player with the higher card takes both cards and puts them, face down, on the bottom of his stack.
 
 	* If the cards are the same rank, it is War. Each player turns up one card face down and one card face up. The player with the higher cards takes both piles (six cards). If the turned-up cards are again the same rank, each player places another card face down and turns another card face up. The player with the higher card takes all 10 cards, and so on.
-	
+* blackjack : 
+	* Follows more or less the classic blackjack/21 rules with a single player, and the computer as the dealer.
+	* There are no bets and only a single round.
+	* The code is kind of unclean but hopefully I'll make it better in the future 😅
