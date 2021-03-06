@@ -1,6 +1,7 @@
 """
 NOTES: Aces are high
 The game is now fully functional with war situation implemented
+Interactive mode requires the users to hit ENTER to flip over a card, automatic mode runs the game automatically and users get the results in only a few seconds
 """
 SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"]
 RANKS = ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King']
@@ -29,6 +30,10 @@ def add_card_to_hand(hand, card):
 # Function which handles a war situation
 """We put all the cards in a list and compare the appropriate ones"""
 def war(check1, check2):
+
+	if mode == 'i':
+		input("Press ENTER to flip over the cards")
+
 	for i in range(2):
 		"""try-except block to handle error
 		if someone runs out of cards during a war, he/she immediately loses"""
@@ -45,18 +50,24 @@ def war(check1, check2):
 
 	# Check which of the face up cards are higher, put all cards in the winner's hand
 	if war_cards[check1].value > war_cards[check2].value:
-		print("Player 1 wins the War")
+		print("\nPlayer 1 wins the War\n")
+
 		for card in war_cards:
 			add_card_to_hand(player_1, card)
+
 	elif war_cards[check1].value < war_cards[check2].value:
-		print("Player 2 wins the War")
+		print("\nPlayer 2 wins the War\n")
+
 		for card in war_cards:
 			add_card_to_hand(player_2, card)
+
 	# If face up cards are again equal in rank, another round of war follows
 	else:
 		war(check1 + 4, check2 + 4)
 
-print("Current Status")
+mode = input("[i]nteractive or [a]utomatic? ")
+
+print("\nCurrent Status\n")
 print("Player 1", len(player_1))
 print("Player 2", len(player_2))
 
@@ -64,38 +75,45 @@ war_cards = [] # This list contains all the cards dealt out during a war
 
 while len(player_1) != 0 and len(player_2) != 0:
 	war_cards = []
+
+	if mode == 'i':
+		input("Press ENTER to flip over the cards")
+
 	# Players flip over a card
 	player_1_card = player_1.pop()
 	player_2_card = player_2.pop()
-	print("Player 1", player_1_card.show_card_info())
+	print("\nPlayer 1", player_1_card.show_card_info())
 	print("Player 2", player_2_card.show_card_info())
 
 	# The cards are compared and appropriate actions are taken
 	if player_1_card.value > player_2_card.value:
-		print("Player 1 takes the hand")
+		print("\nPlayer 1 takes the hand\n")
 		add_card_to_hand(player_1, player_2_card)
 		add_card_to_hand(player_1, player_1_card)
+
 	elif player_1_card.value < player_2_card.value:
-		print("Player 2 takes the hand")
+		print("\nPlayer 2 takes the hand\n")
 		add_card_to_hand(player_2, player_1_card)
 		add_card_to_hand(player_2, player_2_card)
+
 	else:
 		"""If war situation arises,
 		add the cards to a list and call the war() function"""
 		war_cards.append(player_1_card)
 		war_cards.append(player_2_card)
-		print("It's time for War!")
-		run = war(2, 3)
+
+		print("\nIt's time for War!\n")
+
 		# If war() returns False, someone has run out of cards
-		if run == False:
+		if war(2, 3) == False:
 			break
 
 	# Show the current number of cards with each player
-	print("Current Status")
+	print("\nCurrent Status\n")
 	print("Player 1", len(player_1))
 	print("Player 2", len(player_2))
 
-print("Final Scores")
+print("\nFinal Scores\n")
 print("Player 1", len(player_1))
 print("Player 2", len(player_2))
 print("Well played both players. All the best for your next game.")
