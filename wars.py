@@ -1,7 +1,6 @@
 """
 NOTES: Aces are high
 The game is now fully functional with war situation implemented
-Interactive mode requires the users to hit ENTER to flip over a card, automatic mode runs the game automatically and users get the results in only a few seconds
 """
 SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"]
 RANKS = ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King']
@@ -65,7 +64,10 @@ def war(check1, check2):
 	else:
 		war(check1 + 4, check2 + 4)
 
-mode = input("[i]nteractive or [a]utomatic? ")
+mode = input("Mode : [i]nteractive or [a]utomatic? " + """
+Interactive mode requires the users to hit ENTER to flip over a card
+Automatic mode runs the game automatically, get the results in only a few seconds
+No input or Invalid input defaults to Automatic\n""")
 
 print("\nCurrent Status\n")
 print("Player 1", len(player_1))

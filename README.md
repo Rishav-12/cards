@@ -17,4 +17,3 @@ Console card games
 * blackjack : 
 	* Follows more or less the classic blackjack/21 rules with a single player, and the computer as the dealer.
 	* There are no bets and only a single round.
-	* The code is kind of unclean but hopefully I'll make it better in the future 😅
